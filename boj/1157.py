@@ -1,24 +1,21 @@
 import sys
 
-s = sys.stdin.readline().strip()
-s = s.upper()
-
-d = {}
+s = sys.stdin.readline().strip().upper()
+char_count = {}
 
 for char in s:
-    if d.get(char):
-        d[char] +=1
+    if char in char_count:
+        char_count[char] += 1
     else:
-        d[char] = 1
+        char_count[char] = 1
 
-m = max(d.values())
+max_count = max(char_count.values())
 answer = None
 
-for k, v in d.items():
-    if v == m:
-        if answer==None:
+for k, v in char_count.items():
+    if v == max_count:
+        if answer is None:
             answer = k
         else:
             answer = '?'
-
 print(answer)
